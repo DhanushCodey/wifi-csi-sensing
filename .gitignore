@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# ESP-IDF build output
+build/
+sdkconfig
+sdkconfig.old
+managed_components/
+dependencies.lock
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Data — large and regenerable; sidecars are committed
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/*.yaml
