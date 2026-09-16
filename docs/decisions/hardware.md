@@ -18,8 +18,5 @@
 - Largest contiguous DRAM region: ~180 KiB — the real ceiling for the M4 tensor arena
 - Re-measure with WiFi + CSI running in M1-04
 
-## Final Takeaways:
-- **Why python .12 not .13 versions?** : smaller packages in .13 new version lags but .12 gives a full coverage.
-- **Why use two terminal** : we have 3 space local machine, venv and esp-now's local storage. so each 'active' cmd 
-                             shoves one-another.
+
                             

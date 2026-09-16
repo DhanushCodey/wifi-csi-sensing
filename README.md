@@ -83,5 +83,11 @@ why idf.py? it is the command-line command centre for entire esp-idf ecosystem.
 ## END OF M3 
 
 - idf.py -p <port-location> flash monitor
-  : -p to set port, flash : flashes the firmware into the board's flash memory.
-  : monitor : opens a serial terminal at 115200 baud and shows whatever the chip prints.
+  - -p to set port
+  - flash : flashes the firmware into the board's flash memory.
+  - monitor : opens a serial terminal at 115200 baud and shows whatever the chip prints.
+
+## Final Takeaways:
+- **Why python .12 not .13 versions?** : smaller packages in .13 new version lags but .12 gives a full coverage.
+- **Why use two terminal** : we have 3 space local machine, venv and esp-now's local storage. so each 'active' cmd 
+                             shoves one-another.
