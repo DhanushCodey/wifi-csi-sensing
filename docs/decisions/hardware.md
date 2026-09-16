@@ -12,3 +12,8 @@
 - Port names are generic (`usbserial-*`) and can change between USB
   sockets. **MAC is the real board identity** — if in doubt, run
   `esptool flash-id` and match the MAC.
+
+## Markdown
+- Free heap at boot, WiFi off: 304,988 bytes (measured, hello_world, IDF v5.5.5)
+- Largest contiguous DRAM region: ~180 KiB — the real ceiling for the M4 tensor arena
+- Re-measure with WiFi + CSI running in M1-04
