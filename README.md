@@ -27,6 +27,11 @@ Module - 01
 - Accept: docs/hardware.md lets a stranger identify which physical board is which.
 
 RUN THESE THREE COMMAND :
-source .venv/bin/activate 
-pip install esptool
-pip freeze > requirements.txt
+- source .venv/bin/activate 
+- pip install esptool
+- pip freeze > requirements.txt
+
+
+Ask chip What it is : (it get's the detail)
+- ls /dev/usbserial.cu*
+- esptool.py --port /dev/cu.usbserial-0001 flash_id
