@@ -39,7 +39,7 @@ Ask chip What it is : (it get's the detail)
 - esptool.py --port /dev/cu.usbserial-0001 flash_id
 
 ## Module 03 - GOAL : (ESP-IDF(Espressif Iot development famework) (INSTALL)
-- brew install cmake ninja dsp-utils
+- brew install cmake ninja dfu-utils
 - mkdir -p ~/esp && cd ~/esp
 - git clone -b release/v5.5 --recursive https://github.com/espressif/esp-idf.git
 -
@@ -57,8 +57,8 @@ C++ -> Cmake -> Ninja -> dfu-util(packet manager)
 
 creating a directory and downloading the core esp-idf framework and its dependent libraries.
 
-cd ~/esp/esp-idf
-./install.sh esp32
+- cd ~/esp/esp-idf
+- ./install.sh esp32
 
 esp32 runs (Xtensa)- a completely diffrent instruction set. So we need to convert the MAC machine code to Xtensa machine code that where this command is used.<cross-compiler>.
 
@@ -67,7 +67,7 @@ Simple words,
 2. Download the standard xtensa-esp32-elf cross-compiler.
 3. Skip downloading the toolchains for other chips (like the S2, S3, or C3). [1] (https://github.com/espressif/esp-idf/blob/master/install.sh)
 
-
+- alias get_idf='. $HOME/esp/esp-idf/export.sh'
 - get_idf
 - echo $IDF_PATH    : shows the source path "$" of where our esp-idf path file is stored
 - idf.py --version  : checks the version of idf.py file
