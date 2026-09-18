@@ -1,7 +1,7 @@
 | ID | Chip | Rev | Flash | MAC | Port (unstable) | Notes |
 |----|------|-----|-------|-----|-----------------|-------|
-| B1 | ... | 1c:c3:ab:c4:76:2c | ... | RX — running csi_recv |
-| B2 | ... | b4:bf:e9:14:a3:cc | ... | TX — running csi_send |
+| B1 | ESP32-D0WD-V3 | v3.1 | 4 MB | …76:2c | RX — csi_recv |
+| B2 | ESP32-D0WD-V3 | v3.1 | 4 MB | …a3:cc | TX — csi_send |
 
 ## Constraints
 - No PSRAM. ~520 KB internal SRAM total, shared with the WiFi stack —
