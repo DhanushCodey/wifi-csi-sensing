@@ -1,10 +1,7 @@
 | ID | Chip | Rev | Flash | MAC | Port (unstable) | Notes |
 |----|------|-----|-------|-----|-----------------|-------|
-| B1 | ESP32-D0WD-V3 | v3.1 | 4 MB | mac-id_01 | /dev/cu.usbserial-0001 | TX in M1 |
-| B2 | ESP32-D0WD-V3 | v3.1 | 4 MB |mac_id_02 | /dev/cu.usbserial-6 | RX in M1 |
-| B3 | — | | | | | not yet inventoried |
-| B4 | — | | | | | not yet inventoried |
-| B5 | — | | | | | not yet inventoried |
+| B1 | ... | 1c:c3:ab:c4:76:2c | ... | RX — running csi_recv |
+| B2 | ... | b4:bf:e9:14:a3:cc | ... | TX — running csi_send |
 
 ## Constraints
 - No PSRAM. ~520 KB internal SRAM total, shared with the WiFi stack —
@@ -17,6 +14,7 @@
 - Free heap at boot, WiFi off: 304,988 bytes (measured, hello_world, IDF v5.5.5)
 - Largest contiguous DRAM region: ~180 KiB — the real ceiling for the M4 tensor arena
 - Re-measure with WiFi + CSI running in M1-04
+
 
 
                             
