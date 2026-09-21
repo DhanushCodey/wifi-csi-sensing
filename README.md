@@ -26,6 +26,10 @@ pip freeze > requirements.txt"
 - Label each board physically (tape, B1–B5). Record chip variant, flash size, serial     port, USB-serial chip. Photograph the boards and the labels.
 - Accept: docs/hardware.md lets a stranger identify which physical board is which.
 
+- esptool -p <port-id> chip-id
+- esptool -p <port-id> flash-id
+- esptool -p <port-id> read-mac 
+
 ## Module - 02 - GOAL : (CHECK HARDWARE)
 
 RUN THESE THREE COMMAND :
