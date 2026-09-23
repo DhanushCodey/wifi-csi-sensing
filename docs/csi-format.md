@@ -1,6 +1,6 @@
 # This docs is about the CSI(Channel State Information)
 
-### CSI DATA
+## CSI DATA
 - CSI_DATA (app_main.c)
     - #if and #else is used for preprocessor directive controls the portion of source file.
 
@@ -14,7 +14,7 @@
     -  info->payload : calculates the memeory address
        -  moves 15 bytes into it
 
-### Wifi CSI initalization
+## Wifi CSI initalization
 - wifi_csi_init (app_main.c)
     - So basiaclly both sender and reciever agrees on a known pattern in order to recieve and transmit packets.
     - [what was sent (known)  →  [ the room ]  →  what arrived (measured)]
@@ -55,4 +55,31 @@
 
 ## The callback rx_cb
 - So basically the digits that we see are called by a call-back funtion
-- on, every time a packet arrives with CSI attached, the driver calls it and hands you the data
+- on, every time a packet arrives with CSI attached, the driver calls it and hands you the data.
+
+
+## Espressif data's
+
+    DATA_COLUMNS_NAMES_C5C6 : describes the data of C5C6 model esp32.
+    DATA_COLUMNS_NAMES : describes our esp32 data
+
+   ### Adding img and real number
+        csi_data_complex[-1][i] = complex(csi_raw_data[i * 2 + 1], csi_raw_data[i * 2])
+        -  reason is simple, the signal has both amplitude and phase where the img_no is used as the real and the phase is real number
+
+   ### usleep(1000 * 1000 / CONFIG_SEND_FREQUENCY);
+        - Calculates the packet rate.
+    
+   ### ESP-NOW
+        esp_now_send(peer.peer_addr, (const uint8_t *)&count, sizeof(count));
+        - the communication happen by esp-now a communication bridge between esp's.
+        - a 4 byte counter that lands in the 15 byte payload. that's why we have calculation of memory address + 15
+        box:   0   1   2   3  ...  15  16  17  18  19  20 ...
+        [ ] [ ] [ ] [ ]     [ ] [ ] [ ] [ ] [ ] [ ]
+                                    └───────────────┘
+                                    the counter lives here
+
+
+
+    
+
