@@ -1,0 +1,7 @@
+out: data/raw/s001.csv
+started_at: '2026-09-24T17:56:52'
+duration_s: 10
+rows: 494
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: first capture test

@@ -1,0 +1,7 @@
+out: data/raw/s002.csv
+started_at: '2026-09-24T17:59:47'
+duration_s: 10
+rows: 733
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: "2m separation, clear line of sight, empty room"
