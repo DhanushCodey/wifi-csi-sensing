@@ -12,7 +12,7 @@ def parse(path):
     with open(path, "r", encoding="utf-8") as f:
         csv_reader = csv.reader(f)
         
-        for i, row in enumerate(csv_reader):
+        for row in csv_reader:
             rssi = int(row[3])
             if len(row) != 25 :
                 count_not_25 += 1

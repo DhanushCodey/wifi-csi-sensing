@@ -16,6 +16,8 @@ function decl : parse_args():
                 - default? = if no number is given take this no as default.
 - .add_arguments("--note", default="") 
                 - default? = file is file even with no name.
+- p.parse_args() 
+                - inspects the command which im gonna give and makes them into a object
 
 main function declaration :
 args = parse_args()-> get the command (it becomes like hashmap)
