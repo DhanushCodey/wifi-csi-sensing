@@ -7,18 +7,18 @@ from pathlib import Path
 from datetime import datetime
 
 
-def parse_args():
+def cmd_decl():
     p = argparse.ArgumentParser()
     p.add_argument("--port", required=True)
     p.add_argument("--baud", type=int, default=921600)
     p.add_argument("--duration", type=int, default=30)
     p.add_argument("--out", required=True)
     p.add_argument("--note", default="")
-    return p.parse_args()
+    return p.parse_args() 
 
 
 def main():
-    args = parse_args()
+    args = cmd_decl()
     meta_path = Path(args.out).with_suffix(".yaml")
 
     with serial.Serial(args.port, args.baud, timeout=1) as ser, \

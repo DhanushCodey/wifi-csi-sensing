@@ -20,7 +20,7 @@ function decl : parse_args():
                 - inspects the command which im gonna give and makes them into a object
 
 main function declaration :
-args = parse_args()-> get the command (it becomes like hashmap)
+args = cmd_decl()-> get the command (it becomes like hashmap)
 
 meta_path = Path(args.out).with_suffix(".yaml")
  -> args.out = the file name we pass in the command
@@ -119,3 +119,6 @@ yaml.safe_dump(meta_data, mf, sort_keys=False)
     - mf : the file where we should write the data
     - sort_keys=False : keeps the order as i worte no changes
 
+
+CMD : python capture.py --port <port_no> --duration 30 \
+            --out data/raw/<file_name.csv> --note "<give_a_name>"

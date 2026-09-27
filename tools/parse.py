@@ -2,28 +2,29 @@ import ast
 import csv
 import numpy as np
 
+
 def parse(path):
     amps, ids, timestamps, rssis = [], [], [], []
-    dropped_len = 0 
+    dropped_len = 0
     dropped_rssi = 0
     dropped_row = 0
     count_not_25 = 0
 
     with open(path, "r", encoding="utf-8") as f:
         csv_reader = csv.reader(f)
-        
+
         for row in csv_reader:
             rssi = int(row[3])
-            if len(row) != 25 :
+            if len(row) != 25:
                 count_not_25 += 1
                 continue
-            elif row[22] != "384" :
+            elif row[22] != "384":
                 dropped_len += 1
                 continue
-            elif (-100 > rssi < 0) :
+            elif (-100 > rssi < 0):
                 dropped_rssi += 1
                 continue
-            try :
+            try:
                 vals = ast.literal_eval(row[24])
                 vals = vals[4:]
             except (SyntaxError, ValueError) as e:
@@ -44,12 +45,12 @@ def parse(path):
           f"{dropped_len} bad len \n"
           f"{dropped_rssi} bad rssi \n"
           f"{dropped_row} bad row")
-    
-    return{
-        "amplitude" : np.array(amps),
-        "ids" : np.array(ids),
-        "timestamps" : np.array(timestamps),
-        "rssi" : np.array(rssis)
+
+    return {
+        "amplitude": np.array(amps),
+        "ids": np.array(ids),
+        "timestamps": np.array(timestamps),
+        "rssi": np.array(rssis)
     }
 
 
@@ -57,3 +58,4 @@ if __name__ == "__main__":
     import sys
     r = parse(sys.argv[1])
     print("shape : ", r["amplitude"].shape)
+    # print("Sample_rssi", r["rssi"][0])
