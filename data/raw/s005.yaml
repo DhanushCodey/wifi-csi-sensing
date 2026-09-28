@@ -1,0 +1,7 @@
+out: data/raw/s005.csv
+started_at: '2026-09-28T16:06:52'
+duration_s: 20
+rows: 1484
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: Walking back and forth

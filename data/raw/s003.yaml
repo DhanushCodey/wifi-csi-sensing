@@ -1,0 +1,7 @@
+out: data/raw/s003.csv
+started_at: '2026-09-28T16:05:20'
+duration_s: 20
+rows: 1468
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: No one is in the room

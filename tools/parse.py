@@ -26,6 +26,9 @@ def parse(path):
                 continue
             try:
                 vals = ast.literal_eval(row[24])
+                if(len(vals) != 384):
+                    dropped_len += 1
+                    continue
                 vals = vals[4:]
             except (SyntaxError, ValueError) as e:
                 dropped_row += 1

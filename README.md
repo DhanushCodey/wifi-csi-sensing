@@ -131,3 +131,7 @@ refer
 - capture.py
 - capture.md
   
+## MODULE 07 : GOAL - CREATING THE parse.py
+## MODULE 08 : GOAL - Vizualization
+
+## MODULE 09 : GOAL - GET DATA

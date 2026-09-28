@@ -1,0 +1,7 @@
+out: data/raw/s004.csv
+started_at: '2026-09-28T16:05:56'
+duration_s: 20
+rows: 1460
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: Waving my hand
