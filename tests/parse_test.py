@@ -2,7 +2,7 @@ from tools.parse import parse
 
 
 def test_parse_fixture():
-    p = parse("tests/fixture/csi_sample.txt")
+    p = parse("data/fixture/csi_sample.txt")
     assert p["amplitude"].shape == (10, 190)
     assert (p["amplitude"] >= 0).all()
     assert p["ids"][0] == 7219

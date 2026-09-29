@@ -135,3 +135,10 @@ refer
 ## MODULE 08 : GOAL - Vizualization
 
 ## MODULE 09 : GOAL - GET DATA
+
+## MODULE 10 & 11 : GOAL - ALL PAST THREE WORKING MODULES 
+
+## IMPORTANT COMMANDS
+- git ls-files <path>/ -> to get git the data
+- git rm <path> -> deletes the files that are tracket by git
+- rm <path> -> deletes the files that are not tracked by git
