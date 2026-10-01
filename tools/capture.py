@@ -12,12 +12,13 @@ def cmd_decl():
     p = argparse.ArgumentParser()
     p.add_argument("--port", required=True)
     p.add_argument("--baud", type=int, default=921600)
+    p.add_argument("--delay", default=0, type=int)
     p.add_argument("--duration", type=int, default=30)
     p.add_argument("--out", required=True)
     p.add_argument("--label", choices=["present", "empty"],
                    required=True, help="Describes the ground truth")
-    p.add_argument("--act", choices=["waving hand", "walking",
-                   "talking", "none"], default="none", required=True)
+    p.add_argument("--act", choices=["waving_hand", "walking",
+                   "idle", "talking", "none"], required=True)
     p.add_argument("--note", default="")
     p.add_argument("--session", default=datetime.now().strftime("%Y-%m-%d"))
     return p.parse_args()
@@ -30,6 +31,12 @@ def main():
     if args.label == "empty" and args.act != "none":
         print("Empty room can't have a activity")
         return
+    
+    if args.delay:
+        for sec in range(args.delay, 0, -1):
+            print(f"starting in {sec}..", end="\r", flush=True)
+            time.sleep(1)
+        print("recording now...")
 
     with serial.Serial(args.port, args.baud, timeout=1) as ser, \
             open(args.out, "w", newline="", buffering=1) as f:

@@ -1,0 +1,10 @@
+out: data/raw/p1_empty_repeat.csv
+started_at: '2026-10-01T20:16:44'
+duration_s: 60
+activity: none
+label: empty
+rows: 4310
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: just empty
+session: '2026-10-01'

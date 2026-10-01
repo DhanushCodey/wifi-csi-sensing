@@ -1,0 +1,10 @@
+out: data/raw/p1_walking.csv
+started_at: '2026-10-01T20:30:48'
+duration_s: 60
+activity: walking
+label: present
+rows: 4250
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: Just walking inside the room
+session: '2026-10-01'
