@@ -142,3 +142,20 @@ refer
 - git ls-files <path>/ -> to get git the data
 - git rm <path> -> deletes the files that are tracket by git
 - rm <path> -> deletes the files that are not tracked by git
+
+
+## M2 START
+
+## M2 - 00 
+- Made some data sets so that i can train the model.
+
+## AFTER CODE ANALYSIS : ISSUE
+### Blocker in parse.py
+
+1. Issue is code is not caturing the nul bytes.
+def clean_line(): child fuction
+    - nonlocal used to address the var in the parent fucntion 
+    - yield to pause the function and gives the value that passed the condition
+
+2. rssis error block and index problem
+   - just cut and copy the code line

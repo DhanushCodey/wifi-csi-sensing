@@ -6,22 +6,35 @@ import numpy as np
 def parse(path):
     amps, ids, timestamps, rssis = [], [], [], []
     dropped_len = 0
+    dropped_nul = 0
     dropped_rssi = 0
     dropped_row = 0
     count_not_25 = 0
 
-    with open(path, "r", encoding="utf-8") as f:
-        csv_reader = csv.reader(f)
+    with open(path, "r", encoding="utf-8", errors="ignore") as f:
+
+        def clean_line():
+            nonlocal dropped_nul
+            for line in f:
+                if "\x00" in line :
+                    dropped_nul += 1
+                    continue
+                yield line
+
+        csv_reader = csv.reader(clean_line())
 
         for row in csv_reader:
-            rssi = int(row[3])
             if len(row) != 25:
                 count_not_25 += 1
                 continue
-            elif row[22] != "384":
+
+            rssi = int(row[3])
+
+            if row[22] != "384":
                 dropped_len += 1
                 continue
-            elif (-100 > rssi < 0):
+
+            if not (-100 < rssi < 0):
                 dropped_rssi += 1
                 continue
             try:
@@ -46,6 +59,7 @@ def parse(path):
     print(f"parsed {len(amps)} rows | dropped : \n"
           f"{count_not_25} bad rows are spotted \n"
           f"{dropped_len} bad len \n"
+          f"{dropped_nul} bad line \n"
           f"{dropped_rssi} bad rssi \n"
           f"{dropped_row} bad row")
 
