@@ -1,0 +1,10 @@
+out: data/raw/talk_test002.csv
+started_at: '2026-10-01T16:56:57'
+duration_s: 60
+activity: talking
+label: present
+rows: 4300
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: window open, same seat as test001
+session: '2026-10-01'

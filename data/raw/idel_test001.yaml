@@ -1,0 +1,10 @@
+out: data/raw/idel_test001.csv
+started_at: '2026-10-01T17:21:59'
+duration_s: 60
+activity: none
+label: present
+rows: 4305
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: Sitting idle
+session: '2026-10-01'

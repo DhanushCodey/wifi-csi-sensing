@@ -1,0 +1,10 @@
+out: data/raw/empty_test002.csv
+started_at: '2026-10-01T17:14:39'
+duration_s: 60
+activity: none
+label: empty
+rows: 4289
+port: /dev/cu.usbserial-0001
+baud: 921600
+note: window closed and door opens at first
+session: '2026-10-01'
