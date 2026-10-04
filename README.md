@@ -159,3 +159,8 @@ def clean_line(): child fuction
 
 2. rssis error block and index problem
    - just cut and copy the code line
+
+## M2-01 Feature.py
+## GOAL : Calculate the score
+
+refer feature.py and feature.md

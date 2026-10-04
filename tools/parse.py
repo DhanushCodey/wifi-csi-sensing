@@ -75,4 +75,4 @@ if __name__ == "__main__":
     import sys
     r = parse(sys.argv[1])
     print("shape : ", r["amplitude"].shape)
-    # print("Sample_rssi", r["rssi"][0])
+    # print("Sample_rssi", r["timestamps"])
