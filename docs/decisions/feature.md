@@ -84,4 +84,17 @@ now we go the correct time-line now we need resampled data
     - np.empty(rows:, cols:) : created a empty list
 
 adding the values with respected time-frame
-### for 
+
+## Interpolation : 
+    - used to estimate unkown value that fall between the known value (data points).
+
+### for k in range(normalization[1]):
+###     even[:, k] = np.interp(grid, t, normalization[:, k])
+    - this part of the code fills the empty list with subcarrier signal with respect to its time.
+    - even[:, k] : from every rows in kth column
+    - np.inter(..,..,..) : interpolation
+    - grid : the time where u want values
+    - t : the time where is the values
+    - normalization[:, k] : the values at those real time
+    - Final take away is copying the subcarrier bits into even list based on the time-stamp
+

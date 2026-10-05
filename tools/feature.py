@@ -25,6 +25,7 @@ def band_powers(amplitude, timestamps):
     t = t[advancing]
     normalization = normalization[advancing]
 
+    
     grid = np.arange(0, t[-1], 1 / FS)
 
     even = np.empty((len(grid), normalization.shape[1]))
@@ -32,15 +33,25 @@ def band_powers(amplitude, timestamps):
     for k in range(normalization.shape[1]):
         even[:, k] = np.interp(grid, t, normalization[:, k])
 
-    print(
-        f"packet after guard    : {len(t)}\n" 
-        f"duration              : {round(float(t[-1]),1)}\n"
-        f"live subcarriers      : {normalization.shape[1]}\n"
-        f"grid points           : {len(grid)}\n"
-        f"even shapes           : {even.shape}\n"
-    )
-    return None
+    even = even - even.mean(axis=0)
+    power = np.abs(np.fft.rfft(even, axis=0)) ** 2
+    freq = np.fft.rfftfreq(len(even), 1 / FS)
+
+    def band_mean(low, high):
+        sel = (freq >= low) & (freq < high)
+        return power[sel].mean(axis=0)
+    
+    noise = band_mean(*NOISE)
+    breath = np.median(band_mean(*BREATH) / noise)
+    body = np.median(band_mean(*BODY) / noise)
+
+
+    return float(breath), float(body)
 
 if __name__ == "__main__":
     r = parse(sys.argv[1])
-    band_powers(r["amplitude"], r["timestamps"])
+    breath, body = band_powers(r["amplitude"], r["timestamps"])
+    print(
+        f"breathing : {breath:7.2f}\n" 
+        f"body      : {body:7.2f}"
+    )
