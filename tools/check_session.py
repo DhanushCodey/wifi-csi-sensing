@@ -55,6 +55,12 @@ def main(paths):
     empty_rec = [c for c in captions if c["label"] == "empty"]
     present_rec = [c for c in captions if c["label"] == "present"]
 
+    empty_rssi = [c["rssi_mean"] for c in empty_rec]
+    present_rssi = [c["rssi_mean"] for c in present_rssi]
+    
+    drift = max(empty_rssi) - min(empty_rssi)
+    
+
     print("=" * 92)
     print(f"{'capture':22} {'activity':13} {'label':8} {'rows':>6} {'loss%':>6} "
           f"{'RSSI':>7} {'sd':>5} {'breath':>8} {'body':>7}")
