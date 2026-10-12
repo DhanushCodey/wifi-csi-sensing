@@ -8,6 +8,7 @@ BREATH = (0.15, 0.6)
 BODY = (0.6, 5.0)
 NOISE = (15.0, 33.0)
 
+# clean -> time -> resample -> FFT -> bands -> compare
 
 def band_powers(amplitude, timestamps):
 

@@ -56,10 +56,47 @@ def main(paths):
     present_rec = [c for c in captions if c["label"] == "present"]
 
     empty_rssi = [c["rssi_mean"] for c in empty_rec]
-    present_rssi = [c["rssi_mean"] for c in present_rssi]
+    present_rssi = [c["rssi_mean"] for c in present_rec]
     
     drift = max(empty_rssi) - min(empty_rssi)
-    
+    worst_std = max(c["rssi_std"] for c in empty_rec)    
+    att = np.mean(empty_rssi) - np.mean(present_rssi)
+    worst_loss = max(c["loss"] for c in captions)
+
+    cleared = set()
+
+    for key in ("breath", "body"):
+        vals = [c[key] for c in empty_rec]
+        floor = max(vals) - min(vals)
+        if floor == 0:
+            floor = 1e-12
+        base = min(vals)        
+        print(f"\n {key} band floor : {floor:.3f}")
+
+        # gather each act
+        groups = {}
+        for c in present_rec:
+            groups.setdefault(c["activity"], []).append(c[key])
+        
+        # score each act
+        for activity, v in sorted(groups.items(), key=lambda kv: np.mean(kv[1])):
+            multiple = (np.mean(v) - base) / floor
+            worst = (min(v) - base) / floor
+            flag = "" if worst >= 3 else "   <-- weak"
+            print(f"      {activity:13} {np.mean(v):8.2f}  {multiple:7.1f}x floor{flag}")
+
+            # what passed
+            if worst >= 3:
+                cleared.add(activity)
+
+    all_activities = {c["activity"] for c in present_rec}
+    failed = all_activities - cleared
+
+    print()
+    if failed:
+        print(f"    FAIL: {', '.join(sorted(failed))} never cleared 3x in either band")
+    else:
+        print("    PASS: every class clears the floor in at least one band")
 
     print("=" * 92)
     print(f"{'capture':22} {'activity':13} {'label':8} {'rows':>6} {'loss%':>6} "
@@ -67,7 +104,7 @@ def main(paths):
     print("-" * 92)
     for h in captions:
         print(f"{h['name']:22} {h['activity']:13} {h['label']:8} {h['rows']:6d} "
-              f"{h['loss']:6.1f}% {h['rssi_mean']:7.1f} {h['rssi_std']:5.1f} "
+              f"{h['loss']:6.1f} {h['rssi_mean']:7.1f} {h['rssi_std']:5.1f} "
               f"{h['breath']:8.2f} {h['body']:7.2f}")
     print("=" * 92)
 
